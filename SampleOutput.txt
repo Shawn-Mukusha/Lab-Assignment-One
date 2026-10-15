@@ -1,0 +1,26 @@
+SHARED DEPOSIT BEHAVIOUR
+S001: Deposited 100.00; balance = 900.00
+S001: Deposit rejected; amount must be positive and finite.
+
+POLYMORPHIC ACCOUNT PROCESSING
+Each Account reference receives withdraw(600.00) and endOfMonth().
+
+S001 (SavingsAccount): starting balance = 900.00
+S001: Savings withdrawal of 600.00 rejected; minimum balance = 500.00.
+S001: Savings month end: 2% interest = 18.00; balance = 918.00
+S001: final balance = 918.00
+
+C001 (CurrentAccount): starting balance = 250.00
+C001: Current withdrawal of 600.00 accepted; balance = -350.00
+C001: Current month end: maintenance fee = 10.00; balance = -360.00
+C001: final balance = -360.00
+
+S002 (SavingsAccount): starting balance = 1600.00
+S002: Savings withdrawal of 600.00 accepted; balance = 1000.00
+S002: Savings month end: 2% interest = 20.00; balance = 1020.00
+S002: final balance = 1020.00
+
+C002 (CurrentAccount): starting balance = 100.00
+C002: Current withdrawal of 600.00 rejected; overdraft limit = 300.00.
+C002: Current month end: maintenance fee = 10.00; balance = 90.00
+C002: final balance = 90.00
